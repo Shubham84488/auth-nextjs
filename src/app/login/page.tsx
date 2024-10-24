@@ -27,6 +27,7 @@ export default function LoginPage(){
     async function onLogin(){
         try {
             const response = await axios.post("/api/users/login",user)
+            console.log(response)
             console.log("Signup Successful",response.data)
             router.push("/profile")
         } catch (error:any) {
@@ -54,8 +55,11 @@ export default function LoginPage(){
             name="password"
             required/>
 
+            <Link className="text-sm italic text-red-700 mb-2" href="/forgotPassword">forgot password</Link>
+
             <button  onClick={onLogin}
             className="p-2 border-[1px] border-gray-300 rounded-lg mb-4 borfocus:outline-white focus:border-gray-600 text-white font-bold">{buttonDisabled?"No Login" : "Login"}</button>
+
             <Link href="/signup">Visit Signup</Link>
         </div>
     )

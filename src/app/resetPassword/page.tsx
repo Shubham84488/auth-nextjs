@@ -1,0 +1,61 @@
+"use client"
+
+import axios from "axios"
+import Link from "next/link"
+import React,{useState,useEffect} from "react"
+import toast, { Toast,Toaster } from "react-hot-toast"
+
+export default function resetPasswordPage(){
+    const [password,setPassword]= useState("")
+    const [token,setToken]=useState("")
+    const [confirmPassword,setConfirmPassword]= useState("")
+    const [reset,setReset] = useState(false)
+
+    const onSubmit=async()=>{
+        try {
+            if(password==confirmPassword){
+                await axios.post("/api/users/resetPassword",{password,token})
+                
+            }else{
+                toast.error("Both passwords should be same")
+                setPassword("")
+                setConfirmPassword("")
+            }
+    
+        } catch (error:any) {
+            console.log(error.message)
+        }
+    }
+
+    useEffect(() => {
+        const urlToken = window.location.search.split("=")[1];
+        setToken(urlToken || "");
+    }, []);
+
+    return(
+        <div className="w-4/5 mx-auto my-[100px]">
+            <div><Toaster/></div>
+
+            <label htmlFor="email" className="block mb-3">New Password :</label>
+            <input type="password" className="p-2 w-2/5 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            onChange={(e)=>setPassword(e.target.value)}
+            value={password}
+            id="email"
+            name="email" 
+            required/>
+            
+            <label htmlFor="email" className="block mb-3">Confirm Password :</label>
+            <input type="password" className="p-2 w-2/5 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            onChange={(e)=>setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            id="email"
+            name="email" 
+            required/>
+
+            <button onClick={onSubmit}
+            className="block bg-gray-700 rounded-[10px] p-2 hover:opacity-80 focus:opacity-80">
+                Submit
+            </button>
+        </div>
+    )
+}
