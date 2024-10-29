@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { constrainedMemory } from "process"
 import axios from "axios"
+import toast from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
 
 export default function LoginPage(){
 
@@ -27,29 +29,36 @@ export default function LoginPage(){
     async function onLogin(){
         try {
             const response = await axios.post("/api/users/login",user)
-            console.log(response)
             console.log("Signup Successful",response.data)
             router.push("/profile")
         } catch (error:any) {
-            console.log("Some Error Happened",error.message)
-
+            if (error.response && error.response.status === 400) {
+                // Display specific error messages returned from the backend
+                toast.error(error.response.data.message);
+            } else {
+                // Handle other errors
+                toast.error("An unexpected error occurred");
+                console.log("Error:", error.message);
+            }
         }
     }
 
     return(
-        <div className="flex flex-col items-center   justify-center min-h-screen py-2 ">
-            <h1>Login</h1>
+        <div className="bg-gradient-to-br from-pink-100 via-white to-blue-200 flex flex-col items-center justify-center min-h-screen py-2 ">
+            <Toaster/>
+            
+            <h1 className="text-2xl">Login</h1>
             <br />
 
             <label htmlFor="email">Email</label>
-            <input type="text" className="p-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            <input type="text" className="p-2 border-black border-[3px] rounded-lg mb-4  " 
             onChange={(e)=>setUser({...user,email:e.target.value})}
             id="email"
             name="email" 
             required/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" className="p-2 rounded-lg border-gray-300 mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            <input type="password" className="p-2 rounded-lg border-black border-[3px] mb-4  " 
             onChange={(e)=>setUser({...user,password:e.target.value})}
             id="password"
             name="password"
@@ -58,9 +67,9 @@ export default function LoginPage(){
             <Link className="text-sm italic text-red-700 mb-2" href="/forgotPassword">forgot password</Link>
 
             <button  onClick={onLogin}
-            className="p-2 border-[1px] border-gray-300 rounded-lg mb-4 borfocus:outline-white focus:border-gray-600 text-white font-bold">{buttonDisabled?"No Login" : "Login"}</button>
+            className="p-2 border-[1px] border-black border-[3px] rounded-lg mb-4 font-bold">{buttonDisabled?"No Login" : "Login"}</button>
 
-            <Link href="/signup">Visit Signup</Link>
+            <Link href="/signup" className="text-red-900 text-xl">Visit Signup</Link>
         </div>
     )
 }

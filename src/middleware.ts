@@ -13,9 +13,9 @@ export function middleware(request: NextRequest) {
         //This constructs the URL as something like 
         //http://example.com/ based on the current request URL.
     }
-    if(!isPublicPath && !token){
-        return NextResponse.redirect(new URL('/login',request.nextUrl))
-    }
+    // if(!isPublicPath && !token){
+    //     return NextResponse.redirect(new URL('/login',request.nextUrl))
+    // }
 }
  
 // See "Matching Paths" below to learn more

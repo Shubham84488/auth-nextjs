@@ -38,34 +38,34 @@ export default function SignUp(){
         }
     }
     return(
-        <div className="flex flex-col items-center   justify-center min-h-screen py-2 ">
-            <h1>{loading? "Loading" : "Signup"}</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gradient-to-br from-pink-100 via-white to-blue-200 ">
+            <h1 className="text-2xl">{loading? "Loading" : "Signup"}</h1>
             <br />
 
             <label htmlFor="username">Username</label>
-            <input type="text" className="p-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            <input type="text" className="p-2  border-black border-[3px] rounded-lg mb-4 " 
             onChange={(e)=>setUser({...user, username: e.target.value})}
             id="username"
             name="username"
             required/>
 
             <label htmlFor="email">Email</label>
-            <input type="text" className="p-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            <input type="text" className="p-2 border-black border-[3px] rounded-lg mb-4  " 
             onChange={(e)=>setUser({...user,email:e.target.value})}
             id="email"
             name="email" 
             required/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" className="p-2 rounded-lg border-gray-300 mb-4 focus:outline-none focus:border-gray-600 text-black" 
+            <input type="password" className="p-2 rounded-lg border-black border-[3px] mb-4  " 
             onChange={(e)=>setUser({...user,password:e.target.value})}
             id="password"
             name="password"
             required/>
 
             <button  onClick={onSignup}
-            className="p-2 border-[1px] border-gray-300 rounded-lg mb-4 borfocus:outline-white focus:border-gray-600 text-white font-bold">{buttonDisabled?"No Signup" : "Signup Here"}</button>
-            <Link href="/login">Visit login</Link>
+            className="p-2  border-black border-[3px] rounded-lg mb-4 borfocus:outline-white focus:border-gray-600  font-bold">{buttonDisabled?"No Signup" : "Signup Here"}</button>
+            <Link href="/login" className="text-red-900 text-xl">Visit login</Link>
         </div>
         
     )
