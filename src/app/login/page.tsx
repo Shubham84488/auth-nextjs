@@ -47,7 +47,7 @@ export default function LoginPage(){
         <div className="bg-gradient-to-br from-pink-100 via-white to-blue-200 flex flex-col items-center justify-center min-h-screen py-2 ">
             <Toaster/>
             
-            <h1 className="text-2xl">Login</h1>
+            <h1 className="text-2xl font-extrabold">Login</h1>
             <br />
 
             <label htmlFor="email">Email</label>
@@ -64,12 +64,12 @@ export default function LoginPage(){
             name="password"
             required/>
 
-            <Link className="text-sm italic text-red-700 mb-2" href="/forgotPassword">forgot password</Link>
+            <Link className="text-sm italic text-green-700 mb-2" href="/forgotPassword">forgot password</Link>
 
             <button  onClick={onLogin}
-            className="p-2 border-[1px] border-black border-[3px] rounded-lg mb-4 font-bold">{buttonDisabled?"No Login" : "Login"}</button>
+            className="p-2 border-black border-[3px] rounded-lg mb-4 font-bold">{buttonDisabled?"No Login" : "Login"}</button>
 
-            <Link href="/signup" className="text-red-900 text-xl">Visit Signup</Link>
+            <Link href="/signup" className="text-green-900 text-xl font-semibold">Visit Signup</Link>
         </div>
     )
 }

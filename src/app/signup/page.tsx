@@ -65,7 +65,7 @@ export default function SignUp(){
 
             <button  onClick={onSignup}
             className="p-2  border-black border-[3px] rounded-lg mb-4 borfocus:outline-white focus:border-gray-600  font-bold">{buttonDisabled?"No Signup" : "Signup Here"}</button>
-            <Link href="/login" className="text-red-900 text-xl">Visit login</Link>
+            <Link href="/login" className="text-green-900 text-xl font-semibold">Visit login</Link>
         </div>
         
     )

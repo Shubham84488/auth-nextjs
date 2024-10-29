@@ -6,14 +6,6 @@ export const NAV_LINKS = [
     { href: '/contactUs', key: 'contact_us', label: 'Contact Us' },
   ];
   
-  // CAMP SECTION
-  export const PEOPLE_URL = [
-    '/person-1.png',
-    '/person-2.png',
-    '/person-3.png',
-    '/person-4.png',
-  ];
-  
   // FEATURES SECTION
   export const FEATURES = [
     {
@@ -28,21 +20,21 @@ export const NAV_LINKS = [
       icon: '/calendar.svg',
       variant: 'green',
       description:
-        "Schedule an adventure with friends. On holidays, there are many interesting offers from Hilink. That way, there's no more discussion",
+        "Schedule an adventure with friends. On holidays, there are many interesting offers from CampNew. That way, there's no more discussion",
     },
     {
       title: 'Technology using augment reality',
       icon: '/tech.svg',
       variant: 'green',
       description:
-        'Technology uses augmented reality as a guide to your hiking trail in the forest to the top of the mountain. Already supported by the latest technology without an internet connection',
+        'Our team is available 24/7 to assist you with any needs or questions, ensuring a seamless experience.',
     },
     {
-      title: 'Many new locations every month',
+      title: 'Many new hot Deals every month',
       icon: '/location.svg',
       variant: 'orange',
       description:
-        'Lots of new locations every month, because we have a worldwide community of climbers who share their best experiences with climbing',
+        'Choose from a variety of exclusive deals that cater to all types of stays and budgets.',
     },
   ];
   
@@ -126,5 +118,33 @@ export const NAV_LINKS = [
     starNo: 3,
     reviews: 202,
     subDescription: "#6 Best Value in India",
+  },{
+    image: '/camps7.jpg',
+    title: "7. Camp Dev Vilas",
+    price: 6600,
+    starNo: 4,
+    reviews: 202,
+    subDescription: "#7 Best Value in India",
+  },{
+    image: '/camps8.jpg',
+    title: "8. Payal Safari Camp",
+    price: 2800,
+    starNo: 3,
+    reviews: 356,
+    subDescription: "#8 Best Value in India",
+  },{
+    image: '/camps9.jpg',
+    title: "9. Bagh Serai",
+    price: 7190,
+    starNo: 4,
+    reviews: 190,
+    subDescription: "#9 Best Value in India",
+  },{
+    image: '/camps10.jpg',
+    title: "10. Jaisal Classic Resort Jaisalmer",
+    price: 5040,
+    starNo: 5,
+    reviews: 50,
+    subDescription: "#10 Best Value in India",
   }
 ];

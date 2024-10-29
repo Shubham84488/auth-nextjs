@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import { SERVICES } from "@/constants"
+import { useState } from "react"
 
 type serviceItems={
     image: string,
@@ -47,14 +48,28 @@ const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceIt
   )
 }
 const servicePage=()=>{
+    const [visibleCount, setVisibleCount] = useState(4); 
+
+    const loadMore = () => {
+        setVisibleCount((prevCount) => Math.min(prevCount + 4, SERVICES.length));
+    };
     return(
-        <div className="max-container padding-container flex flex-col gap-2 items-end mb-[50px]">
+        <div className="max-container padding-container flex flex-col gap-2 items-center mb-[50px]">
             <br />
-            <h1 className="text-4xl self-center font-bold">Hotels in India and Places to Stay</h1>
+            <h1 className="text-4xl self-center font-bold">Camps and Hotels in India</h1>
             <br />
-            {SERVICES.map((service,index)=>(
+            {SERVICES.slice(0, visibleCount).map((service,index)=>(
                 <ServiceCol key={index} image={service.image} title={service.title} price={service.price} starNo={service.starNo} reviews={service.reviews} subDescription={service.subDescription}/>
             ))}
+
+            {visibleCount < SERVICES.length && (
+                    <button
+                    onClick={loadMore}
+                    className="border-[3px] font-semibold p-3 rounded-lg mt-6 "
+                    >
+                    Load More
+                    </button>
+                )}
         </div>
     )
 }
