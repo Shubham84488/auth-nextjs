@@ -13,7 +13,7 @@ export const NAV_LINKS = [
       icon: '/map.svg',
       variant: 'green',
       description:
-        'We provide a solution for you to be able to use our application when climbing, yes offline maps you can use at any time there is no signal at the location',
+        'We provide a solution for you to be able to use our application when travelling, yes offline maps you can use at any time there is no signal at the location',
     },
     {
       title: 'Set an adventure schedule',

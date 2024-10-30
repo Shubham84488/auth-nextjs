@@ -26,7 +26,7 @@ const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceIt
                         <p className="font-bold text-2xl">Price : ₹{price}</p>
                         <p className="from-neutral-500 text-center">Fully Refundable</p>
                     </div>
-                    <div className="p-2 text-2xl text-center bg-yellow-400 w-[250px] rounded-5xl cursor-pointer">View Deal</div>
+                    <div className="p-2 text-2xl text-center bg-yellow-400 w-[250px] rounded-5xl cursor-pointer">Book Now</div>
                 </div>
                 <div className="flex flex-col items-center m-6 mt-12 space-y-2 max-w-[300px] w-full"> 
                     <div className="flex flex-row">
