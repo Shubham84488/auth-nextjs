@@ -1,15 +1,13 @@
 "use client"
 
 import axios from "axios"
-import Link from "next/link"
 import React,{useState,useEffect} from "react"
-import toast, { Toast,Toaster } from "react-hot-toast"
+import toast, {Toaster } from "react-hot-toast"
 
-export default function resetPasswordPage(){
+export default function ResetPasswordPage(){
     const [password,setPassword]= useState("")
     const [token,setToken]=useState("")
     const [confirmPassword,setConfirmPassword]= useState("")
-    const [reset,setReset] = useState(false)
 
     const onSubmit=async()=>{
         try {
@@ -22,8 +20,14 @@ export default function resetPasswordPage(){
                 setConfirmPassword("")
             }
     
-        } catch (error:any) {
-            console.log(error.message)
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.log("Some Error Happened", error.message);
+                toast.error("Some Error Happened: " + error.message);
+            } else {
+                console.log("An unknown error occurred");
+                toast.error("An unknown error occurred.");
+            }
         }
     }
 

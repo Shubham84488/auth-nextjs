@@ -13,6 +13,6 @@ export async function connect() {
             process.exit()
         })
     } catch (error) {
-        console.log("Something gone wrong")
+        console.log("Something gone wrong"+error)
     }
 }

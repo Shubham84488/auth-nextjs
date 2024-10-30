@@ -2,8 +2,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { constrainedMemory } from "process"
-import axios from "axios"
+import axios,{AxiosError} from "axios"
 import toast from "react-hot-toast"
 import { Toaster } from "react-hot-toast"
 
@@ -31,14 +30,21 @@ export default function LoginPage(){
             const response = await axios.post("/api/users/login",user)
             console.log("Signup Successful",response.data)
             router.push("/profile")
-        } catch (error:any) {
-            if (error.response && error.response.status === 400) {
-                // Display specific error messages returned from the backend
-                toast.error(error.response.data.message);
-            } else {
-                // Handle other errors
-                toast.error("An unexpected error occurred");
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                if (error.response && error.response.status === 400) {
+                    // Display specific error messages returned from the backend
+                    toast.error(error.response.data.message);
+                } else {
+                    // Handle other Axios errors
+                    toast.error("An unexpected error occurred with the request");
+                }
+            } else if (error instanceof Error) {
+                // Handle non-Axios errors
                 console.log("Error:", error.message);
+                toast.error("An unexpected error occurred");
+            } else {
+                toast.error("An unknown error occurred");
             }
         }
     }

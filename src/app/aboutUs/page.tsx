@@ -22,7 +22,7 @@ const page = () => {
             <section className="mb-8">
                 <h2 className="text-3xl font-semibold text-green-600 mb-4">Our Story</h2>
                 <p className="text-gray-700 leading-relaxed">
-                    CampNew was founded on the vision of bringing people closer to nature without sacrificing the warmth of home. What began as a small retreat has grown into a destination for those who seek more than just a getaway—it's a place to rejuvenate, reset, and reconnect.
+                    CampNew was founded on the vision of bringing people closer to nature without sacrificing the warmth of home. What began as a small retreat has grown into a destination for those who seek more than just a getaway—it&apos;s a place to rejuvenate, reset, and reconnect.
                 </p>
             </section>
 

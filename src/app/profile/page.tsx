@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios"
 import Link from "next/link"
-import toast from "react-hot-toast"
+import toast,{Toaster} from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -15,8 +15,14 @@ export default function ProfilePage() {
             toast.success("Logout Successful")
             router.push('/login')
             console.log(response)
-        } catch (error:any) {
-            console.log(error.message)
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.log("Some Error Happened", error.message);
+                toast.error("Some Error Happened: " + error.message);
+            } else {
+                console.log("An unknown error occurred");
+                toast.error("An unknown error occurred.");
+            }
         }
     }
 
@@ -28,6 +34,7 @@ export default function ProfilePage() {
 
     return(
         <div className="bg-gradient-to-br from-pink-100 via-white to-blue-200 flex flex-col items-center justify-center min-h-screen py-2">
+            <Toaster/>
             <h1>Profile</h1>
             <hr />
             <p>Profile Page</p>

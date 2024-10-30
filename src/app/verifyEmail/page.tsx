@@ -15,12 +15,15 @@ export default function VerifyEmailPage() {
             const response=await axios.post('/api/users/verifyEmail', {token})
             console.log(response)
             setVerified(true);
-        } catch (error:any) {
+        } catch (error: unknown) {
             setError(true);
-            console.log(error.reponse.data);
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.data); // log specific error response
+            } else if (error instanceof Error) {
+                console.error("Unexpected error:", error.message);
+            }
         }
     }
-
     useEffect(() => {
         const urlToken = window.location.search.split("=")[1];
         setToken(urlToken || "");

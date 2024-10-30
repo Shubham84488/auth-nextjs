@@ -1,9 +1,9 @@
 "use client"
-import React,{useEffect, useState} from "react";
+import React,{ useState} from "react";
 import axios from "axios";
 import {toast,Toaster} from "react-hot-toast";
 
-export default function forgotPassword(){
+export default function ForgotPassword(){
 
     const [email,setEmail]= useState("");
 
@@ -16,8 +16,14 @@ export default function forgotPassword(){
                 toast.error("Not a valid email, try again!")
                 setEmail("")
             }
-        } catch (error:any) {
-            console.log("Some Error Happened",error.message)
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.log("Some Error Happened", error.message);
+                toast.error("Some Error Happened: " + error.message);
+            } else {
+                console.log("An unknown error occurred");
+                toast.error("An unknown error occurred.");
+            }
         }
     }
 

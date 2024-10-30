@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from 'react';
-import toast, { Toast,Toaster } from 'react-hot-toast';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import toast, {Toaster } from 'react-hot-toast';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -10,14 +10,14 @@ const ContactUs = () => {
     message: '',
   });
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData)
     toast.success("Submitted")

@@ -47,7 +47,7 @@ const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceIt
         </div>
   )
 }
-const servicePage=()=>{
+const ServicePage=()=>{
     const [visibleCount, setVisibleCount] = useState(4); 
 
     const loadMore = () => {
@@ -73,4 +73,4 @@ const servicePage=()=>{
         </div>
     )
 }
-export default servicePage
+export default ServicePage
