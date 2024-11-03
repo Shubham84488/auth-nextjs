@@ -3,15 +3,28 @@
 import { NAV_LINKS } from '@/constants'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './Button'
 import { useRouter } from 'next/navigation'
+import axios from 'axios';
 
 const Navbar = () => {
+  const [username,setUsername]= useState("login")
   const router = useRouter()
   const onLogin = ()=>{
-    router.push("/login")
+    if(username=="login"){
+      router.push("/login")
+    }else{
+      router.push("/profile")
+    }
   }
+  const getUserDetails=async()=>{
+    const res=await axios.get('api/users/me')
+    setUsername(res.data.data)
+  }
+  useEffect(()=>{
+    getUserDetails()
+  },[])
   return (
     <nav className='flexBetween max-container padding-container relative z-30 py-5'>
       <Link href="/">
@@ -29,7 +42,7 @@ const Navbar = () => {
       </ul>
 
       <div className='lg:flexCenter hidden'>
-        <Button type="button" title="login" icon="/user.svg" variant="btn_dark_green" click={onLogin}/>
+        <Button type="button" title={username} icon="/user.svg" variant="btn_dark_green" click={onLogin}/>
       </div>
 
       <Image 

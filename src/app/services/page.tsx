@@ -2,6 +2,7 @@
 import Image from "next/image"
 import { SERVICES } from "@/constants"
 import { useState } from "react"
+import toast,{Toaster} from "react-hot-toast"
 
 type serviceItems={
     image: string,
@@ -12,6 +13,9 @@ type serviceItems={
     subDescription: string
 }
 const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceItems) => {
+    const handleBooking=()=>{
+        toast.success("Booking Succesful")
+    }
   return (
         <div className=" border shadow-lg shadow-gray-400 rounded-xl w-4/5">
             <div className="flex flex-row gap-[10px]">
@@ -26,7 +30,7 @@ const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceIt
                         <p className="font-bold text-2xl">Price : ₹{price}</p>
                         <p className="from-neutral-500 text-center">Fully Refundable</p>
                     </div>
-                    <div className="p-2 text-2xl text-center bg-yellow-400 w-[250px] rounded-5xl cursor-pointer">Book Now</div>
+                    <div className="p-2 text-2xl text-center bg-yellow-400 w-[250px] rounded-5xl cursor-pointer hover:bg-yellow-500" onClick={handleBooking}>Book Now</div>
                 </div>
                 <div className="flex flex-col items-center m-6 mt-12 space-y-2 max-w-[300px] w-full"> 
                     <div className="flex flex-row">
@@ -55,6 +59,7 @@ const ServicePage=()=>{
     };
     return(
         <div className="max-container padding-container flex flex-col gap-2 items-center mb-[50px]">
+            <Toaster/>
             <br />
             <h1 className="text-4xl self-center font-bold">Camps and Hotels in India</h1>
             <br />
