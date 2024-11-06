@@ -8,6 +8,9 @@ interface DecodedToken{
 export const getDataFromToken=(request:NextRequest)=>{
     try {
         const token = request.cookies.get("token")?.value || ''
+        if (!token) {
+            return 0
+        }
         const decodedToken=jwt.verify(token,process.env.TOKEN_SECRET!) as DecodedToken
 
         return decodedToken.id
