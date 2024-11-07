@@ -58,7 +58,7 @@ const Navbar = () => {
           <div>
             {NAV_LINKS.map((link)=>(
               <div key={link.key}>
-                <Link href={link.href} 
+                <Link href={link.href} key={link.key}
                 className='regular-16 text-white flexCenter cursor-pointer py-2 px-6 transition-all hover:font-bold md:px-16'
                 >
                   {link.label}
