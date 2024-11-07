@@ -35,7 +35,7 @@ export default function VerifyEmailPage() {
             console.log(token)
             verifyUserEmail();
         }
-    }, [token]);
+    }, [token,verifyUserEmail]);
 
     return(
         <div className="bg-gradient-to-br from-pink-100 via-white to-blue-200 flex flex-col items-center justify-center min-h-screen py-2">

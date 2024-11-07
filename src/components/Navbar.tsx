@@ -57,8 +57,8 @@ const Navbar = () => {
           <hr className='border-white mx-1'/>
           <div>
             {NAV_LINKS.map((link)=>(
-              <div>
-                <Link href={link.href} key={link.key}
+              <div key={link.key}>
+                <Link href={link.href} 
                 className='regular-16 text-white flexCenter cursor-pointer py-2 px-6 transition-all hover:font-bold md:px-16'
                 >
                   {link.label}
