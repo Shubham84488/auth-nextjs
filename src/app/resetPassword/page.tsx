@@ -37,29 +37,32 @@ export default function ResetPasswordPage(){
     }, []);
 
     return(
-        <div className="w-4/5 mx-auto my-[100px] bg-gradient-to-br from-pink-100 via-white to-blue-200">
-            <div><Toaster/></div>
+        <div className="bg-gradient-to-br from-pink-100 via-white to-blue-200 h-[100vh]">
+            <div className="w-4/5 mx-auto py-[100px] ">
+                <div><Toaster/></div>
 
-            <label htmlFor="email" className="block mb-3">New Password :</label>
-            <input type="password" className="p-2 w-2/5 border-black border-[3px] rounded-lg mb-4 " 
-            onChange={(e)=>setPassword(e.target.value)}
-            value={password}
-            id="email"
-            name="email" 
-            required/>
-            
-            <label htmlFor="email" className="block mb-3">Confirm Password :</label>
-            <input type="password" className="p-2 w-2/5 border-black border-[3px] rounded-lg mb-4 " 
-            onChange={(e)=>setConfirmPassword(e.target.value)}
-            value={confirmPassword}
-            id="email"
-            name="email" 
-            required/>
+                <label htmlFor="email" className="block mb-3">New Password :</label>
+                <input type="password" className="p-2 w-2/5 border-black border-[3px] rounded-lg mb-4 " 
+                onChange={(e)=>setPassword(e.target.value)}
+                value={password}
+                id="email"
+                name="email" 
+                required/>
+                
+                <label htmlFor="email" className="block mb-3">Confirm Password :</label>
+                <input type="password" className="p-2 w-2/5 border-black border-[3px] rounded-lg mb-4 " 
+                onChange={(e)=>setConfirmPassword(e.target.value)}
+                value={confirmPassword}
+                id="email"
+                name="email" 
+                required/>
 
-            <button onClick={onSubmit}
-            className="block bg-gray-700 rounded-[10px] p-2 hover:opacity-80 focus:opacity-80">
-                Submit
-            </button>
+                <button onClick={onSubmit}
+                className="block bg-gray-700 text-white rounded-[10px] p-2 hover:opacity-80 focus:opacity-80">
+                    Submit
+                </button>
+            </div>
         </div>
+        
     )
 }
