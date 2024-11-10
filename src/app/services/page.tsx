@@ -1,8 +1,10 @@
 "use client"
 import Image from "next/image"
 import { SERVICES } from "@/constants"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import toast,{Toaster} from "react-hot-toast"
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 type serviceItems={
     image: string,
@@ -12,6 +14,10 @@ type serviceItems={
     reviews: number,
     subDescription: string
 }
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+
 const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceItems) => {
     const handleBooking=()=>{
         toast.success("Booking Succesful")
@@ -53,13 +59,39 @@ const ServiceCol = ({image,title,price,starNo,reviews,subDescription}: serviceIt
 }
 const ServicePage=()=>{
     const [visibleCount, setVisibleCount] = useState(4); 
+    const [value1, onChange1] = useState<Value>(new Date());
+    const [value2, onChange2] = useState<Value>(new Date());
+    const [disabled1,setDisabled1] = useState(true)
 
     const loadMore = () => {
         setVisibleCount((prevCount) => Math.min(prevCount + 4, SERVICES.length));
     };
+
+    const CheckIn=()=>{
+        setDisabled1(!disabled1)
+    }
+
     return(
         <div className="max-container padding-container flex flex-col gap-2 items-center mb-[50px]">
             <Toaster/>
+            <div>
+                <div className="flex-col inline-block mr-24">
+                    <Calendar onChange={onChange1} showWeekNumbers value={value1} className={`inline-block ${disabled1 ? "hidden": ""}`}/>
+                    <button className="block border-[2px] p-2 bg-gray-400 rounded-[10px] hover:opacity-90 hover:font-extrabold text-black mx-auto shadow-sm"
+                        onClick={CheckIn}
+                    >Check In</button>
+                    <p>Check In Date: {value1 ? value1 instanceof Date ? value1.toLocaleDateString('en-GB') : 'No date selected' : 'No date selected'}</p>
+                </div>
+                <span className="mr-24">To</span>
+                <div className="flex-col inline-block">
+                    <Calendar onChange={onChange2} showWeekNumbers value={value2} className={`inline-block ${disabled1 ? "hidden": ""}`}/>
+                    <button className="block border-[2px] p-2 bg-gray-400 rounded-[10px] hover:opacity-90 hover:font-extrabold text-black mx-auto"
+                        onClick={CheckIn}>Check Out
+                    </button>
+                    <p>Check Out Date: {value2 ? value2 instanceof Date ? value2.toLocaleDateString('en-GB') : 'No date selected' : 'No date selected'}</p>
+                </div>
+            </div>
+            
             <br />
             <h1 className="text-4xl self-center font-bold">Camps and Hotels in India</h1>
             <br />
