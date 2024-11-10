@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { SERVICES } from "@/constants"
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import toast,{Toaster} from "react-hot-toast"
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
