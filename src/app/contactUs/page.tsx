@@ -35,7 +35,7 @@ const ContactUs = () => {
         <Toaster/>
         {/* Title Section */}
         <section className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-700 mb-4">Contact Us</h1>
+          <h1 className="text-4xl font-bold text-green-700 mb-4">Contact Us</h1>
           <p className="text-lg text-gray-600">
             Have questions or need assistance? Reach out to the CampNew team!
           </p>
@@ -115,7 +115,7 @@ const ContactUs = () => {
 
         {/* Contact Information Section */}
         <section className="text-center mt-12">
-          <h2 className="text-2xl font-semibold text-blue-600 mb-4">Contact Information</h2>
+          <h2 className="text-2xl font-semibold text-green-600 mb-4">Contact Information</h2>
           <p className="text-gray-700 mb-2">📍 123 Rajkot Marg, Delhi, India</p>
           <p className="text-gray-700 mb-2">📞 Phone: 999-2123-848</p>
           <p className="text-gray-700">✉️ Email: support@campnew.com</p>
