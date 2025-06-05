@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast"
 
 // Define the User type
 interface User {
@@ -59,6 +60,7 @@ export default function SignUp() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gradient-to-br from-pink-100 via-white to-blue-200">
+            <Toaster/>
             <h1 className="text-2xl">{loading ? "Loading" : "Signup"}</h1>
             <br />
 

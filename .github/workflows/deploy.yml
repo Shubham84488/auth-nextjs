@@ -1,0 +1,30 @@
+name: Deploy to EC2 on Push
+
+on:
+  push:
+    branches:
+      - master  # or your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 65.0.87.93 >> ~/.ssh/known_hosts
+
+      - name: Deploy over SSH
+        run: |
+          ssh ubuntu@65.0.87.93 << 'EOF'
+            cd CampNew
+            git pull origin master
+            docker-compose down
+            docker-compose up -d --build
+          EOF
