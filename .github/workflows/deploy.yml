@@ -3,7 +3,7 @@ name: Deploy to EC2 on Push
 on:
   push:
     branches:
-      - master  # or your default branch
+      - master  # or your main branch
 
 jobs:
   deploy:
@@ -24,7 +24,19 @@ jobs:
         run: |
           ssh ubuntu@65.0.87.93 << 'EOF'
             cd CampNew
-            git pull origin master
+
+            echo "🧹 Cleaning old build..."
             docker-compose down
-            docker-compose up -d --build
+            docker system prune -af
+
+            echo "📥 Pulling latest code..."
+            git pull origin master
+
+            echo "🚧 Rebuilding Docker containers..."
+            docker-compose build --no-cache
+
+            echo "🚀 Starting app..."
+            docker-compose up -d
+
+            echo "✅ Deployment done!"
           EOF
